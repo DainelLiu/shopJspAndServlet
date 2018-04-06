@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>112商城后台管理</title>
+<title>程序猿的解忧小铺后台管理</title>
 </head>
 <c:if test="${empty admin }">
 	<jsp:forward page="/admin/index.jsp" ></jsp:forward>

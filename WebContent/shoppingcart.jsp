@@ -12,13 +12,18 @@
 <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
+<style type="text/css">
+	.cart_p{
+		border: 1px solid #0299aa;
+	    border-radius: 4px;
+	    text-align: center;
+	    height: 30px;
+	    line-height: 30px;
+    }
+</style>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/ddsmoothmenu.js">
-
-
-
-</script>
+<script type="text/javascript" src="js/ddsmoothmenu.js"></script>
 
 <script type="text/javascript">
 
@@ -147,8 +152,8 @@ ddsmoothmenu.init({
 					</form>
                     <div style="float:right; width: 215px; margin-top: 20px;">
                     
-                    <c:if test="${!empty shoppingCar.shoppingItems}"><p><a href="${pageContext.request.contextPath }/placeOrder.jsp">去下单</a></p></c:if>
-                    <p><a href="${pageContext.request.contextPath}/index.jsp">继续购物</a></p>
+                    <c:if test="${!empty shoppingCar.shoppingItems}"><p class="cart_p"><a href="${pageContext.request.contextPath }/placeOrder.jsp">去下单</a></p></c:if>
+                    <p class="cart_p"><a href="${pageContext.request.contextPath}/index.jsp">继续购物</a></p>
                     	
                     </div>
 			</div>
@@ -156,7 +161,7 @@ ddsmoothmenu.init({
     </div> 
     
     <div id="templatemo_footer">
-		    Copyright (c) 2016 <a href="#">112商城</a> | <a href="#">112工作室</a>	
+		    Copyright (c) 2016 <a href="#">程序猿的解忧小铺</a> | <a href="#">程序猿的解忧小铺</a>	
     </div> 
     
 </div> 

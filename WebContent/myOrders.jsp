@@ -5,22 +5,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
 <title>Insert title here</title>
+<style type="text/css">
+	hr {
+		border: 2px solid darkslateblue;
+	}
+	.cart_p{
+		border: 1px solid #0299aa;
+	    border-radius: 4px;
+	    text-align: center;
+	    height: 30px;
+	    line-height: 30px;
+	    width: 40%;
+	    margin-top:8px;
+   }
+</style>
 </head>
 <body>
-	<center>
-	<h2>我所有的订单</h2>
-	<table border="1" width="700">
+<div id="templatemo_body_wrapper" style="padding-top:8%">
+	<center style="background-color:#fff;width: 45%;border-radius: 4px;margin: 0 auto;padding-bottom: 1px;">
+	<h2 style="padding-top: 15px;margin-bottom: 0px;padding-bottom: 15px;">我所有的订单</h2>
+	<hr>
+	<table width="700" align="center" style="text-align: center;">
 		<tr>
-			<td>订单号</td>
-			<td>下单时间</td>
-			<td>订单总金额</td>
-			<td>订单状态</td>
-			<td>操作</td>
+			<th>订单号</th>
+			<th>下单时间</th>
+			<th>订单总金额</th>
+			<th>订单状态</th>
+			<th>操作</th>
 		</tr>
 		<c:forEach items="${orders }" var="order" >
-			<tr>
+			<tr style="height: 30px;">
 				<td>${order.oid }</td>
 				<td>${order.ordertime }</td>
 				<td>${order.money }</td>
@@ -33,9 +50,11 @@
 				<td>
 					<c:if test="${order.state == 1}"><a href="${pageContext.request.contextPath }/OrderServlet?op=delOrder&oid=${order.oid}&state=0">取消订单</a></c:if>
 				</td>
-			</tr>			
+			</tr>
 		</c:forEach>
 	</table>
+	<p class="cart_p"><a href="${pageContext.request.contextPath}/index.jsp">返回首页</a></p>
 	</center>
+</div>
 </body>
 </html>

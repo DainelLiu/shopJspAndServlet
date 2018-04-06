@@ -94,7 +94,7 @@ body {
     </li>
     <li> <a class="head">版本信息</a>
       <ul>
-        <li><a href="#" target="_blank">112工作室</a></li>
+        <li><a href="#" target="_blank">程序猿的解忧小铺</a></li>
       </ul>
     </li>
   </ul>
