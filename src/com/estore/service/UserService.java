@@ -1,5 +1,7 @@
 package com.estore.service;
 
+import java.util.List;
+
 import com.estore.domain.User;
 
 public interface UserService {
@@ -26,6 +28,8 @@ public interface UserService {
 	 */
 	boolean updateUserMsg(User user);
 	
+	
+	 List<User> findAllUser();
 	
 	
 }

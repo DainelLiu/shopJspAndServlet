@@ -8,7 +8,10 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.estore.dao.OrderItemDao;
+import com.estore.domain.Admin;
+import com.estore.domain.Order;
 import com.estore.domain.OrderItem;
+import com.estore.domain.User;
 import com.estore.utils.C3P0Util;
 
 public class OrderItemDaoImpl implements OrderItemDao {
@@ -70,4 +73,36 @@ public class OrderItemDaoImpl implements OrderItemDao {
 		}
 	}
 
+	
+	public List<OrderItem> findOrderItemByOid(String oid) {
+		
+
+		try {
+			String sql = "select * from orderitem where oid=?";
+			QueryRunner qr = new QueryRunner(C3P0Util.getDataSource());
+			List<OrderItem> orderItem = qr.query(sql, new BeanListHandler<OrderItem>(OrderItem.class), oid);
+			return orderItem;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public List<OrderItem> findPageRecords(int startIndex, int pageSize, String oid) {
+		try {
+			String sql = "select * from orderitem where oid=? limit ?,?";
+			QueryRunner qr = new QueryRunner(C3P0Util.getDataSource());
+			List<OrderItem> orderItem = qr.query(sql, new BeanListHandler<OrderItem>(OrderItem.class), oid, startIndex, pageSize);
+			if(orderItem != null || orderItem.size() > 0){
+				for(int i = 0; i < orderItem.size(); i++){
+					sql = "select * from user where uid=?";
+					oid = orderItem.get(i).getOid();
+					Order order = qr.query(sql, new BeanHandler<Order>(Order.class),oid);
+					orderItem.get(i).setOrder(order);
+				}
+			}
+			return orderItem;
+		} catch (SQLException e) {
+			throw new RuntimeException(e+"...查询失败");
+		}
+	}
 }

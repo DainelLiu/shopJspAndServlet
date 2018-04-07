@@ -2,6 +2,7 @@ package com.estore.dao;
 
 import java.util.List;
 
+import com.estore.domain.Order;
 import com.estore.domain.OrderItem;
 
 public interface OrderItemDao {
@@ -40,5 +41,9 @@ public interface OrderItemDao {
 	 * @return
 	 */
 	public List<OrderItem> findAllOrderItem();
+	
+	public List<OrderItem> findOrderItemByOid(String oid);
+	
+	public List<OrderItem> findPageRecords(int startIndex, int pageSize, String oid);
 
 }

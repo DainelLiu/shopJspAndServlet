@@ -16,11 +16,16 @@ import com.estore.domain.ShoppingItem;
 import com.estore.domain.User;
 import com.estore.service.OrderItemService;
 import com.estore.service.OrderService;
+import com.estore.service.ProductService;
 import com.estore.service.ShoppingItemService;
+import com.estore.service.UserService;
 import com.estore.service.impl.OrderItemServiceImpl;
 import com.estore.service.impl.OrderServiceImpl;
+import com.estore.service.impl.ProductServiceImpl;
 import com.estore.service.impl.ShoppingItemServiceImpl;
+import com.estore.service.impl.UserServiceImpl;
 import com.estore.utils.OrderIdUtils;
+import com.estore.utils.Page;
 
 public class OrderServlet extends HttpServlet {
 
@@ -45,6 +50,10 @@ public class OrderServlet extends HttpServlet {
 			delOrder(request, response);
 		} else if ("lgout".equals(op)) {
 			// lgout(request, response);
+		}else if ("getOrderItem".equals(op)) {
+			getOrderItem(request, response);
+		}else if ("updateOrderSign".equals(op)) {
+			updateOrderSign(request, response);
 		}
 	}
 
@@ -141,6 +150,62 @@ public class OrderServlet extends HttpServlet {
 
 	private void findAllOrder(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
+		OrderService orderService = new OrderServiceImpl();
+		UserService userService = new UserServiceImpl();
+		List users = userService.findAllUser();
+		String num = request.getParameter("num");
+		Page orders = orderService.findPageRecodes(num);
+		request.setAttribute("page", orders);
+		request.setAttribute("users", users);
+		request.getRequestDispatcher("/admin/order/orderList.jsp").forward(
+				request, response);
+
+	}
+	
+	//@SuppressWarnings("unused")
+	private void getOrderItem(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		String oid =request.getParameter("oid");
+		OrderService orderService = new OrderServiceImpl();
+		OrderItemService orderItemService = new OrderItemServiceImpl();
+		UserService userService = new UserServiceImpl();
+		List users = userService.findAllUser();
+		List orderItem = orderItemService.findOrderItemByOid(oid);
+		String num = request.getParameter("num");
+		ProductService productServlet = new ProductServiceImpl();
+		List product =  productServlet.findAllProduct();
+		Page orders = orderService.findPageRecodes(num);
+		request.setAttribute("page", orders);
+		request.setAttribute("page", orders);
+		request.setAttribute("product", product);
+		request.setAttribute("orderItem", orderItem);
+		request.getRequestDispatcher("/admin/order/orderItemList.jsp").forward(
+				request, response);
+
+	}
+	
+	//updateOrderSign
+	private void updateOrderSign(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String oid =request.getParameter("oid");
+		OrderService orderService = new OrderServiceImpl();
+		
+		if(orderService.updateOrderState(oid, 2)){
+			UserService userService = new UserServiceImpl();
+			List users = userService.findAllUser();
+			String num = request.getParameter("num");
+			Page orders = orderService.findPageRecodes(num);
+			request.setAttribute("page", orders);
+			request.setAttribute("users", users);
+			request.getRequestDispatcher("/admin/order/orderList.jsp").forward(
+					request, response);
+			
+		}
+
+		
+		
 
 	}
 

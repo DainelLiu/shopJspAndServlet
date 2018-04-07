@@ -9,6 +9,7 @@ public class OrderItem implements Serializable {
 	private String pid;
 	private int buynum;
 
+	private Order order;
 	/**
 	 * 订单项id
 	 * @return
@@ -74,5 +75,13 @@ public class OrderItem implements Serializable {
 		return "OrderItem [itemid=" + itemid + ", oid=" + oid + ", pid=" + pid
 				+ ", buynum=" + buynum + "]";
 	}
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	
+	
 
 }

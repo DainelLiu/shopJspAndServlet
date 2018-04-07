@@ -1,5 +1,7 @@
 package com.estore.dao;
 
+import java.util.List;
+
 import com.estore.domain.User;
 
 public interface UserDao {
@@ -24,6 +26,7 @@ public interface UserDao {
 	 */
 	public boolean updateUser(User user);
 	
+	public List<User> findAllUser();
 	
 	
 }
