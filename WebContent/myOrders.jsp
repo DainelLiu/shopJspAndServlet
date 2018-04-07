@@ -25,7 +25,7 @@
 </head>
 <body>
 <div id="templatemo_body_wrapper" style="padding-top:8%">
-	<center style="background-color:#fff;width: 45%;border-radius: 4px;margin: 0 auto;padding-bottom: 1px;">
+	<center style="background-color:#fff;width: 50%;border-radius: 4px;margin: 0 auto;padding-bottom: 1px;">
 	<h2 style="padding-top: 15px;margin-bottom: 0px;padding-bottom: 15px;">我所有的订单</h2>
 	<hr>
 	<table width="700" align="center" style="text-align: center;">
@@ -37,7 +37,7 @@
 			<th>操作</th>
 		</tr>
 		<c:forEach items="${orders }" var="order" >
-			<tr style="">
+			<tr style="height:30px;font-size:15px">
 				<td>${order.oid }</td>
 				<td>${order.ordertime }</td>
 				<td>${order.money }</td>
