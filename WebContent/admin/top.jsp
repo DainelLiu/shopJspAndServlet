@@ -59,7 +59,7 @@ a img {
         <td width="248" background="images/main_11.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="16%"><span class="STYLE5"></span></td>
-            <td width="75%"><div align="center"><span class="STYLE7">112工作室 (<a href="#" target="_blank">www.112estore.com</a>)</span></div></td>
+            <td width="75%"><div align="center"><span class="STYLE7">程序猿的解忧小铺 (<a href="#" target="_blank">www.112estore.com</a>)</span></div></td>
             <td width="9%">&nbsp;</td>
           </tr>
         </table></td>

@@ -133,7 +133,7 @@ ddsmoothmenu.init({
     </div> <!-- END of templatemo_main -->
     
     <div id="templatemo_footer">
-    	Copyright (c) 2016 <a href="#">112商城</a> | <a href="#">112工作室</a>
+    	Copyright (c) 2016 <a href="#">程序猿的解忧小铺</a> | <a href="#">程序猿的解忧小铺</a>
     </div> <!-- END of templatemo_footer -->
     
 </div> <!-- END of templatemo_wrapper -->

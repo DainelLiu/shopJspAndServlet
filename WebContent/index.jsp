@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Shoes Store, free template</title>
+<title>Index</title>
 <meta name="keywords" content="shoes store, free template, ecommerce, online shop, website templates, CSS, HTML" />
 <meta name="description" content="Shoes Store is a free ecommerce template provided " />
 <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
@@ -75,7 +75,7 @@ ddsmoothmenu.init({
             </form>
         </div>
     </div> <!-- END of templatemo_menubar -->
-	<div class="copyrights">Collect from <a href="#" title="112商城">112商城</a></div>
+	<div class="copyrights">Collect from <a href="#" title="程序猿的解忧小铺">程序猿的解忧小铺</a></div>
     
     <div id="templatemo_main">
     	<div id="sidebar" class="float_l">
@@ -151,9 +151,6 @@ ddsmoothmenu.init({
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_main -->
     
-    <div id="templatemo_footer">
-    	Copyright (c) 2016 <a href="#">112商城</a> | <a href="#">112工作室</a>
-    </div>
 </div>
 </div>
 	<script type="text/javascript">
