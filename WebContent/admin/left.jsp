@@ -83,18 +83,13 @@ body {
     </li>
     <li> <a class="head">订单管理</a>
       <ul>
-        <li><a href="messages.php" target="rightFrame">查询/修改订单</a></li>
+      	<li><a href="${pageContext.request.contextPath }/OrderServlet?op=findAllOrder&num=1" target="rightFrame">查询/修改订单</a></li>
       </ul>
     </li>
     <li> <a class="head">系统用户管理</a>
       <ul>
         <li><a href="${pageContext.request.contextPath }/admin/admin/addAdmin.jsp" target="rightFrame">添加系统用户</a></li>
         <li><a href="${pageContext.request.contextPath }/AdminServlet?op=findAllAdmin&num=1" target="rightFrame">查看/修改系统用户</a></li>
-      </ul>
-    </li>
-    <li> <a class="head">版本信息</a>
-      <ul>
-        <li><a href="#" target="_blank">112工作室</a></li>
       </ul>
     </li>
   </ul>
