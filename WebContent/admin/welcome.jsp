@@ -8,6 +8,6 @@
 
 <body>
 	<br /><br />
-	<p align="center"><font style="font-family:隶书" size="8">欢迎使用112后台管理系统！</font></p>
+	<p align="center"><font style="font-family:隶书" size="8">欢迎使用程序猿的解忧小铺后台管理系统！</font></p>
 </body>
 </html>
