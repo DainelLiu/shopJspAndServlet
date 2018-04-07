@@ -43,12 +43,13 @@
 				<td>${order.money }</td>
 				<td>
 					<c:if test="${order.state == 0}">订单已取消</c:if>
-					<c:if test="${order.state == 1}">已下单</c:if>
-					<c:if test="${order.state == 2}">已支付</c:if>
-					<c:if test="${order.state == 3}">已发货</c:if>
+					<c:if test="${order.state == 1}">待发货</c:if>
+					<c:if test="${order.state == 2}">已发货</c:if>
+					<c:if test="${order.state == 3}">已完成</c:if>
 				</td>
 				<td>
 					<c:if test="${order.state == 1}"><a href="${pageContext.request.contextPath }/OrderServlet?op=delOrder&oid=${order.oid}&state=0">取消订单</a></c:if>
+					<c:if test="${order.state == 2}"><a href="${pageContext.request.contextPath }/OrderServlet?op=delOrder&oid=${order.oid}&state=3">确定收货</a>，<a href="${pageContext.request.contextPath }/OrderServlet?op=delOrder&oid=${order.oid}&state=0">取消</a></c:if>
 				</td>
 			</tr>
 		</c:forEach>
