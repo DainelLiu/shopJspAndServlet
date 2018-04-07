@@ -151,12 +151,9 @@ ddsmoothmenu.init({
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_main -->
     
-<<<<<<< HEAD
-=======
     <div id="templatemo_footer">
     	Copyright (c) 2016 <a href="#">程序猿的解忧小铺</a> | <a href="#">程序猿的解忧小铺</a>
     </div>
->>>>>>> branch 'master' of https://github.com/DainelLiu/shopJspAndServlet.git
 </div>
 </div>
 	<script type="text/javascript">
