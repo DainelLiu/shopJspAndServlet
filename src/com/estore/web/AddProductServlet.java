@@ -35,7 +35,9 @@ public class AddProductServlet extends HttpServlet {
 		
 		try {
 			InputStream is = fileItem.getInputStream();
-			String storeDirectory = getServletContext().getRealPath("/files");
+			
+			String storeDirectory = getServletContext().getRealPath("/");
+			String savePath = storeDirectory.substring(0, storeDirectory.lastIndexOf("\\"))+"\\files";
 			String name = fileItem.getName();
 			
 			if(name!=null){
@@ -43,7 +45,7 @@ public class AddProductServlet extends HttpServlet {
 			}
 			name = UUID.randomUUID().toString()+"_"+name;
 			
-			File file = new File(storeDirectory,name);
+			File file = new File(savePath,name);
 		    
 			try {
 				fileItem.write(file);

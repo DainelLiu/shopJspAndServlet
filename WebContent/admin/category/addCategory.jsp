@@ -5,13 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>添加分类</title>
+<style type="text/css">
+			table{
+				border-collapse : collapse
+			}
+		</style>
 </head>
 <body>
 	
 	<form method="post" action="${pageContext.request.contextPath }/CategoryServlet">
 		<input type="hidden" name="op" value="addCategory"/>
-		<table border="0" align="center" width="700">
-			<tr bgcolor="#B4CCCE">
+		<table border="1" align="center" width="700">
+			<tr>
 				<td>
 					<h3>分类增加</h3>
 				</td>
@@ -21,9 +26,12 @@
 						<span>分类类名：</span>
 						<input type="text" name="cname" value="${cname }"/>
 						${msg }
-						<br>
-						<input type="submit" value="增加" />
 					</h4>
+				</td>
+			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2">
+					<input type="submit" value="增加" style="width: 200px;height: 30px;" />
 				</td>
 			</tr>
 		</table>

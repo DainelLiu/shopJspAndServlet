@@ -5,6 +5,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<style type="text/css">
+			table{
+				border-collapse : collapse;
+			}
+		</style>
 	</head>
 	<body>
 	<%-- <form method="post" action="${pageContext.request.contextPath }/ProductServlet" enctype="multipart/form-data"> --%>
@@ -12,8 +17,8 @@
 		<input type="hidden" name="op" value="updateProduct"/>
 		<input type="hidden" name="imgurl" value="${product.imgurl }">
 		
-		<table border="0"  align="center" width="700">
-			<tr bgcolor="#B4CCCE">
+		<table border="1"  align="center" width="700">
+			<tr>
 				<td >
 					<h3>基本信息</h3>
 				</td>
@@ -28,7 +33,7 @@
 						<h4><span style="color:red">*</span>商品号：</h4><input type="text" name="pid" value="${product.pid }"/>
 						<div style="height: 5px"></div>
 					</td>
-			<tr bgcolor=#B4CCCE>
+			<tr>
 				<td>
 					<h3>库存/规格</h3>
 				</td>
@@ -40,7 +45,7 @@
 					</table>
 				</td>
 			</tr>
-			<tr bgcolor="#B4CCCE">
+			<tr>
 				<td>
 					<h3>商品信息：</h3>
 				</td>
@@ -60,7 +65,11 @@
 							</td>
 						</tr>
 					</table>
-					<input type="submit" value="增加">
+				</td>
+			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2">
+					<input type="submit" value="增加" style="width: 200px;height: 30px;" />
 				</td>
 			</tr>
 		</table>

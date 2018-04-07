@@ -5,13 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>添加系统用户</title>
+<style type="text/css">
+	table{
+		border-collapse : collapse
+	}
+</style>
 </head>
 <body>
 	
 	<form method="post" action="${pageContext.request.contextPath }/AdminServlet">
 		<input type="hidden" name="op" value="addAdmin"/>
-		<table border="0" align="center" width="700">
-			<tr bgcolor="#B4CCCE">
+		<table border="1" align="center" width="700">
+			<tr>
 				<td>
 					<h3>系统用户增加</h3>
 				</td>
@@ -35,7 +40,11 @@
 						${msgPwd1 }
 						${msgPwd2 }
 					</h4>
-					<p><input type="submit" value="增加" /></p>
+				</td>
+			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2">
+					<input type="submit" value="增加" style="width: 200px;height: 30px;" />
 				</td>
 			</tr>
 		</table>

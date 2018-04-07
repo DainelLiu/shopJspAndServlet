@@ -4,13 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<style type="text/css">
+	table{
+		border-collapse : collapse
+	}
+</style>
 </head>
 <body>
 	<form method="post" action="${pageContext.request.contextPath }/CategoryServlet">
 		<input type="hidden" name="op" value="updateCategory"/>
 		<input type="hidden" name="cid" value="<%=request.getParameter("cid")%>">
-		<table border="0" align="center" width="700">
-			<tr bgcolor="#B4CCCE">
+		<table border="1" align="center" width="700">
+			<tr>
 				<td>
 					<h3>分类修改</h3>
 				</td>
@@ -19,8 +24,12 @@
 						<span style="color:red">*</span> 
 						<span>分类类名：</span>
 						<input type="text" name="cname" value="<%=request.getParameter("cname")%>" />
-						<input type="submit" value="修改" />
 					</h4>
+				</td>
+			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2">
+					<input type="submit" value="增加" style="width: 200px;height: 30px;" />
 				</td>
 			</tr>
 		</table>

@@ -37,7 +37,7 @@
 			<th>操作</th>
 		</tr>
 		<c:forEach items="${orders }" var="order" >
-			<tr style="height: 30px;">
+			<tr style="">
 				<td>${order.oid }</td>
 				<td>${order.ordertime }</td>
 				<td>${order.money }</td>

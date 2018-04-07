@@ -5,12 +5,17 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<style type="text/css">
+			table{
+				border-collapse : collapse;
+			}
+		</style>
 	</head>
 	<body>
 	<form method="post" action="${pageContext.request.contextPath }/AddProductServlet" enctype="multipart/form-data">
-		<table border="0"  align="center" width="700">
-			<tr bgcolor="#B4CCCE">
-				<td >
+		<table border="1" align="center" width="700">
+			<tr>
+				<td>
 					<h3>基本信息</h3>
 				</td>
 				<td>
@@ -21,48 +26,53 @@
 								</c:forEach>	
 							</select>
 						</h4>
-						<h4><span style="color:red">*</span>商品号：</h4><input type="text " name="pid"/>
+						<h4><span style="color:red">*</span>商品号：<input type="text " name="pid"/></h4>
 						<div style="height: 5px"></div>
 					</td>
-			<tr bgcolor=#B4CCCE>
+			<tr>
 				<td>
 					<h3>库存/规格</h3>
 				</td>
 				<td>
 					<table>
 						<tr>
-							<td><h4><span style="color:red">*</span>总库存：</h4><input type="text "  name="pnum"/></td>
+							<td><h4><span style="color:red">*</span>总库存：<input type="text "  name="pnum"/></h4></td>
 						</tr>
 					</table>
 				</td>
 			</tr>
-			<tr bgcolor="#B4CCCE">
+			<tr>
 				<td>
 					<h3>商品信息：</h3>
 				</td>
 				<td>
 					<table>
 						<tr>
-							<td><h4><span style="color:red">*</span>商品名：</h4><input type="text " name="pname"/></td>
+							<td><h4><span style="color:red">*</span>商品名：<input type="text " name="pname"/></h4></td>
 						</tr>
 						<tr>
 							<td>
-								<h4>商城价:</h4>￥<input type="text " name="estoreprice"/>
+								<h4>商城价:￥<input type="text " name="estoreprice"/></h4>
 			
-								<h4>市场价:</h4>￥<input type="text " name="markprice"/>
-								<h4>图片区:</h4><input type="file" name="imgurl"/>
+								<h4>市场价:￥<input type="text " name="markprice"/></h4>
+								<h4>图片区:<input type="file" name="imgurl"/></h4>
 								
 								<h4>商品描述:</h4><textarea name="description" cols="50" rows="5"></textarea>
 								<br>
-								<input type="submit" value="增加">
+								
 							</td>
 						</tr>
 					</table>
 				</td>
 			</tr>
+			<tr style="text-align: center;">
+				<td colspan="2">
+					<input type="submit" value="增加" style="width: 200px;height: 30px;" />
+				</td>
+			</tr>
 		</table>
-	</body>
 	</form>
+	</body>
 </html>
 
 
