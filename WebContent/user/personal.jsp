@@ -55,7 +55,7 @@ span {
 						<br /><br />
 						邮&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" name="email" value="${user.email }">
 						<br /> <br />
-						出生日期：<input type="text" name="birthday" value="${user.birthday }">
+						出生日期：<input type="text" name="birthday" value="${birthday }">
 						<br /><br />
 						<%-- 头像： ${user.headicon }
 						<br /><br /> --%>

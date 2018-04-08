@@ -22,7 +22,7 @@ public class OrderDaoImpl implements OrderDao {
 			QueryRunner qr = new QueryRunner(C3P0Util.getDataSource());
 			String sql = "insert into `order`(oid,money,recipients,tel,address,state,ordertime,uid) values(?,?,?,?,?,?,?,?)";
 			int update = qr.update(sql, order.getOid(), order.getMoney(), order.getRecipients(), order.getTel(),
-					order.getAddress(), order.getState(), new Date(order.getOrdertime().getTime()), order.getUid());
+					order.getAddress(), order.getState(), order.getOrdertime(), order.getUid());
 			return update;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

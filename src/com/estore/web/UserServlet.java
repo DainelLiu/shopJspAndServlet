@@ -3,6 +3,7 @@ package com.estore.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -56,7 +57,7 @@ public class UserServlet extends HttpServlet {
 			user.setUpdatetime(new Date());
 			
 			UserService userService = new UserServiceImpl();
-			
+			System.out.println(user.getBirthday());
 			boolean update = userService.updateUserMsg(user);
 			if (update) {
 				response.getWriter().write("修改成功,1秒后跳到主页");
@@ -94,8 +95,11 @@ public class UserServlet extends HttpServlet {
 		
 		UserService userService = new UserServiceImpl();
 		User user = userService.login(username, password);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:dd");
+		String birthday = sdf.format(user.getBirthday());
 		if(user != null){
 			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("birthday", birthday);
 			response.sendRedirect(request.getContextPath()+"/index1.jsp");
 			return ;
 		}else{
@@ -123,6 +127,7 @@ public class UserServlet extends HttpServlet {
 			BeanUtils.copyProperties(user, userFormBean);
 			UserService userService = new UserServiceImpl();
 			user.setUpdatetime(new Date());
+			
 			boolean regist = userService.regist(user);
 			if(regist){
 				response.getWriter().write("注册成功,1秒后跳到登录页");

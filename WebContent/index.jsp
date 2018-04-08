@@ -56,6 +56,11 @@ ddsmoothmenu.init({
 	        	${user.nickname }
 	        	<a href="${pageContext.request.contextPath }/UserServlet?op=lgout">退出</a></p>
 	        </c:if> 
+	        <p>
+		        <c:if test="${!empty user }">
+		        	<a href="${pageContext.request.contextPath }/OrderServlet?op=myoid">我的订单</a> |
+		        </c:if>
+	        </p>
 		</div>
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_header -->

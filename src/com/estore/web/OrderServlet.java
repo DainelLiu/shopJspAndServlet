@@ -1,6 +1,8 @@
 package com.estore.web;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -96,8 +98,14 @@ public class OrderServlet extends HttpServlet {
 		String tel = request.getParameter("tel");
 
 		int state = 1;
-		Date date = new Date();
 
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+		Date sysdDate = null;  
+		try {  
+		sysdDate = sdf.parse(sdf.format(new Date()));  
+		} catch (ParseException e) {  
+		e.printStackTrace();  
+		} 
 		Order order = new Order();
 		order.setOid(oid);
 		order.setUid(Integer.parseInt(uid));
@@ -105,7 +113,7 @@ public class OrderServlet extends HttpServlet {
 		order.setAddress(address);
 		order.setTel(tel);
 		order.setState(state);
-		order.setOrdertime(date);
+		order.setOrdertime(sysdDate);
 
 		OrderService orderService = new OrderServiceImpl();
 		ShoppingItemService shoppingItemService = new ShoppingItemServiceImpl();
