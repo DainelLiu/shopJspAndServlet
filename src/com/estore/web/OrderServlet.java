@@ -3,6 +3,7 @@ package com.estore.web;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.estore.domain.Order;
 import com.estore.domain.OrderItem;
+import com.estore.domain.OrderTimeExtend;
 import com.estore.domain.Product;
 import com.estore.domain.ShoppingCar;
 import com.estore.domain.ShoppingItem;
@@ -68,8 +70,21 @@ public class OrderServlet extends HttpServlet {
 		boolean result = orderService.updateOrderState(oid, Integer.parseInt(stateStr));
 		if(result){
 			User user = (User) request.getSession().getAttribute("user");
-			List<Order> orders = orderService.findOrderByUid(user.getUid());
+			String num = request.getParameter("num");
+			Page orders = orderService.findPageRecodes(user.getUid(),num);
+			request.setAttribute("page", orders);
+			List<OrderTimeExtend> ordertimes = new ArrayList<OrderTimeExtend>();
+			for(int i = 0 ; i < orders.getRecords().size(); i++){
+				Order order = (Order) orders.getRecords().get(i);
+				OrderTimeExtend ote = new OrderTimeExtend();
+				ote.setOid(order.getOid());
+				SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String ordertime = sdf1.format(order.getOrdertime());
+				ote.setOrdertime(ordertime);
+				ordertimes.add(ote);
+			}
 			request.setAttribute("orders", orders);
+			request.setAttribute("ordertimes", ordertimes);
 //			response.sendRedirect(request.getContextPath()+"/myOrders.jsp");
 			request.getRequestDispatcher("/myOrders.jsp").forward(request, response);
 			return ;
@@ -80,8 +95,28 @@ public class OrderServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
 		OrderService orderService = new OrderServiceImpl();
-		List<Order> orders = orderService.findOrderByUid(user.getUid());
+		//List<Order> orders = orderService.findOrderByUid(user.getUid());
+		
+		/*---*/
+		
+		String num = request.getParameter("num");
+		Page orders = orderService.findPageRecodes(user.getUid(),num);
+		request.setAttribute("page", orders);
+		
+		/*--*/
+		
+		List<OrderTimeExtend> ordertimes = new ArrayList<OrderTimeExtend>();
+		for(int i = 0 ; i < orders.getRecords().size(); i++){
+			Order order = (Order) orders.getRecords().get(i);
+			OrderTimeExtend ote = new OrderTimeExtend();
+			ote.setOid(order.getOid());
+			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String ordertime = sdf1.format(order.getOrdertime());
+			ote.setOrdertime(ordertime);
+			ordertimes.add(ote);
+		}
 		request.setAttribute("orders", orders);
+		request.setAttribute("ordertimes", ordertimes);
 		request.getRequestDispatcher("/myOrders.jsp")
 				.forward(request, response);
 		return;

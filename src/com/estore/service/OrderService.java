@@ -48,4 +48,7 @@ public interface OrderService {
 	 */
 	List<Order> findOrderByUid(int uid);
 	
+	
+	Page findPageRecodes(int uid,String num);
+	
 }

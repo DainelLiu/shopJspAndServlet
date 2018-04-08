@@ -1,7 +1,8 @@
 package com.estore.dao.impl;
 
-import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -116,11 +117,19 @@ public class OrderDaoImpl implements OrderDao {
 
 	public List<Order> findOrderByUid(int uid) {
 		try {
-			String sql = "select * from `order` where uid=?";
+			String sql = "select * from `order` where uid=? order by ordertime DESC,oid DESC ";
 			QueryRunner qr = new QueryRunner(C3P0Util.getDataSource());
 			List<Order> orders = qr.query(sql, new BeanListHandler<Order>(Order.class), uid);
 			if(orders != null || orders.size() > 0){
 				for(int i = 0; i < orders.size(); i++){
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String ordertime = sdf1.format(orders.get(i).getOrdertime());
+					try {
+						orders.get(i).setOrdertime(sdf1.parse(ordertime));
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					sql = "select * from orderitem where oid=?";
 					String oid = orders.get(i).getOid();
 					List<OrderItem> orderitems = qr.query(sql, new BeanListHandler<OrderItem>(OrderItem.class),oid);

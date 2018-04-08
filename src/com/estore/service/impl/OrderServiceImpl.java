@@ -64,5 +64,17 @@ public class OrderServiceImpl implements OrderService {
 		List<Order> orders = orderDao.findOrderByUid(uid);
 		return orders;
 	}
+	
+	public Page findPageRecodes(int uid,String num) {
+		int pageNum = 1;
+		if(num != null){
+			pageNum = Integer.parseInt(num);
+		}
+		int totalRecordNum = orderDao.findRecordCount();
+		Page page = new Page(pageNum,totalRecordNum,5);
+		List<Order> records = orderDao.findPageRecords(page.getStartIndex(), page.getPageSize(),uid);
+		page.setRecords(records);
+		return page;
+	}
 
 }
