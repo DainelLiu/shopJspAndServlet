@@ -47,7 +47,7 @@ ddsmoothmenu.init({
 <div id="templatemo_wrapper">
 
 	<div id="templatemo_header">
-    	<div id="site_title"><h1><a href="http://www.mycodes.net">Online Shoes Store</a></h1></div>
+    	<div id="site_title"><h1><a>Online Store</a></h1></div>
         <div id="header_right">
         	<p>
 	        <c:if test="${!empty user }">

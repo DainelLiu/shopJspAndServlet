@@ -43,11 +43,11 @@ public class UserServlet extends HttpServlet {
 		}else if("lgout".equals(op)){
 			lgout(request,response);
 		}else if(uid != null) {
-			updatePersonalData(request, response);
+			updatePersonalData(uid,request, response);
 		}
 	}
 
-	private void updatePersonalData(HttpServletRequest request, HttpServletResponse response)
+	private void updatePersonalData(String uid, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UserFormBean userFormBean = FillDataBean.fillData(UserFormBean.class, request);
 		User user = new User();
@@ -55,13 +55,18 @@ public class UserServlet extends HttpServlet {
 			ConvertUtils.register(new DateLocaleConverter(), Date.class);
 			BeanUtils.copyProperties(user, userFormBean);
 			user.setUpdatetime(new Date());
+			user.setUid(Integer.parseInt(uid));
 			
 			UserService userService = new UserServiceImpl();
 			System.out.println(user.getBirthday());
 			boolean update = userService.updateUserMsg(user);
 			if (update) {
 				response.getWriter().write("修改成功,1秒后跳到主页");
-				response.setHeader("Refresh", "1;URL="+request.getContextPath()+"/index.jsp");
+				request.setAttribute("user", user);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				String birthday = sdf.format(user.getBirthday());
+				request.getSession().setAttribute("birthday", birthday);
+				response.setHeader("Refresh", "1;URL="+request.getContextPath()+"/index1.jsp");
 				return;
 			} else {
 //				response.getWriter().write("嗯，个人资料修改失败了，请重新修改吧,1秒后回到个人资料页");
@@ -95,11 +100,14 @@ public class UserServlet extends HttpServlet {
 		
 		UserService userService = new UserServiceImpl();
 		User user = userService.login(username, password);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String birthday = sdf.format(user.getBirthday());
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String updateTime = sdf1.format(user.getUpdatetime());
 		if(user != null){
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("birthday", birthday);
+			request.getSession().setAttribute("updateTime", updateTime);
 			response.sendRedirect(request.getContextPath()+"/index1.jsp");
 			return ;
 		}else{

@@ -59,7 +59,7 @@ span {
 						<br /><br />
 						<%-- 头像： ${user.headicon }
 						<br /><br /> --%>
-						注册时间： ${user.updatetime }
+						注册时间： ${updateTime }
 						<br /><br />
 						<%-- <span>请准确填写您的信息，确保货物准确到达</span>
 						<br /><br />

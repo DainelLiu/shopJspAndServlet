@@ -38,11 +38,11 @@ public class UserFormBean {
 		if(birthday == null || "".equals(birthday.trim())){
 			error.put("birthday", "出生日期不能为空");
 		}else{
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:dd");
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			try {
 				df.parse(birthday);
 			} catch (ParseException e) {
-				error.put("birthday", "出生日期格式为yyyy-MM-dd HH:mm:dd");
+				error.put("birthday", "出生日期格式为yyyy-MM-dd");
 			}
 		}
 		
