@@ -92,11 +92,11 @@ body {
         <li><a href="${pageContext.request.contextPath }/AdminServlet?op=findAllAdmin&num=1" target="rightFrame">查看/修改系统用户</a></li>
       </ul>
     </li>
-    <li> <a class="head">版本信息</a>
+  <!--   <li> <a class="head">版本信息</a>
       <ul>
         <li><a href="#" target="_blank">程序猿的解忧小铺</a></li>
       </ul>
-    </li>
+    </li> -->
   </ul>
 </div>
 </body>
