@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.estore.domain.Order;
 import com.estore.domain.OrderItem;
+import com.estore.domain.Product;
 import com.estore.domain.ShoppingCar;
 import com.estore.domain.ShoppingItem;
 import com.estore.domain.User;
@@ -199,8 +200,19 @@ public class OrderServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String oid =request.getParameter("oid");
 		OrderService orderService = new OrderServiceImpl();
+		ProductService productService = new ProductServiceImpl();
 		
 		if(orderService.updateOrderState(oid, 2)){
+			OrderItemService orderItemService = new OrderItemServiceImpl();
+			List<OrderItem> orderItem = orderItemService.findOrderItemByOid(oid);
+			for(int i =0;i<orderItem.size();i++){
+				int number = orderItem.get(i).getBuynum();
+				Product product = productService.findProductByPid(orderItem.get(i).getPid());
+				int num = product.getPnum();
+				product.setPnum(num - number);
+				productService.updateProduct(product);
+				
+			}
 			UserService userService = new UserServiceImpl();
 			List users = userService.findAllUser();
 			String num = request.getParameter("num");
