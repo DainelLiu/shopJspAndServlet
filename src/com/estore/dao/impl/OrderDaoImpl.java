@@ -98,7 +98,7 @@ public class OrderDaoImpl implements OrderDao {
 	
 	public List<Order> findPageRecords(int startIndex, int pageSize, int uid) {
 		try {
-			String sql = "select * from `order` where uid=? limit ?,?";
+			String sql = "select * from `order` where uid=? order by ordertime DESC,oid DESC limit ?,?";
 			QueryRunner qr = new QueryRunner(C3P0Util.getDataSource());
 			List<Order> orders = qr.query(sql, new BeanListHandler<Order>(Order.class), uid, startIndex, pageSize);
 			if(orders != null || orders.size() > 0){
